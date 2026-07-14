@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1560 1170" font-family="IBM Plex Sans, -apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1b2733"/></marker><marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e5d43"/></marker><marker id="arra" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a4a12"/></marker><marker id="arrr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a33a2a"/></marker></defs>
+<rect x="0" y="0" width="1560" height="1170" rx="18" fill="#f2f5ea" stroke="#d8dfcd"/>
+<text x="44" y="52" font-size="15" letter-spacing="4" fill="#5c6b60" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace" font-weight="600">FP&amp;A AGENT · REQUEST LIFECYCLE</text>
+<text x="1516" y="52" text-anchor="end" font-size="13" fill="#8a958b" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">ONE QUESTION → GUARDED SQL × N → GROUNDED ANSWER</text>
+<text x="130" y="112" text-anchor="middle" font-size="13" letter-spacing="2" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace" font-weight="700">USER</text>
+<line x1="130" y1="130" x2="130" y2="960" stroke="#8a958b" stroke-width="1.4" stroke-dasharray="5 5"/>
+<text x="390" y="112" text-anchor="middle" font-size="13" letter-spacing="2" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace" font-weight="700">NEXT.JS /api/chat</text>
+<line x1="390" y1="130" x2="390" y2="960" stroke="#8a958b" stroke-width="1.4" stroke-dasharray="5 5"/>
+<text x="660" y="112" text-anchor="middle" font-size="13" letter-spacing="2" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace" font-weight="700">ADK API SERVER</text>
+<line x1="660" y1="130" x2="660" y2="960" stroke="#8a958b" stroke-width="1.4" stroke-dasharray="5 5"/>
+<text x="920" y="112" text-anchor="middle" font-size="13" letter-spacing="2" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace" font-weight="700">AGENT · GEMINI</text>
+<line x1="920" y1="130" x2="920" y2="960" stroke="#8a958b" stroke-width="1.4" stroke-dasharray="5 5"/>
+<text x="1170" y="112" text-anchor="middle" font-size="13" letter-spacing="2" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace" font-weight="700">run_finance_sql</text>
+<line x1="1170" y1="130" x2="1170" y2="960" stroke="#8a958b" stroke-width="1.4" stroke-dasharray="5 5"/>
+<text x="1400" y="112" text-anchor="middle" font-size="13" letter-spacing="2" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace" font-weight="700">BIGQUERY</text>
+<line x1="1400" y1="130" x2="1400" y2="960" stroke="#8a958b" stroke-width="1.4" stroke-dasharray="5 5"/>
+<rect x="385" y="168" width="10" height="132" rx="3" fill="#1b2733" opacity="0.85"/>
+<rect x="655" y="200" width="10" height="750" rx="3" fill="#1b2733" opacity="0.85"/>
+<rect x="915" y="232" width="10" height="718" rx="3" fill="#1b2733" opacity="0.85"/>
+<polyline points="130,180 390,180" fill="none" stroke="#1b2733" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="132.5" y="159.0" width="255" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="260.0" y="173.0" text-anchor="middle" font-size="12" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">POST message · userId · sessionId</text>
+<polyline points="390,212 660,212" fill="none" stroke="#1b2733" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="397.5" y="191.0" width="255" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="525.0" y="205.0" text-anchor="middle" font-size="12" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">ensure session (create if absent)</text>
+<polyline points="660,244 920,244" fill="none" stroke="#1b2733" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="692.0" y="223.0" width="196" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="790.0" y="237.0" text-anchor="middle" font-size="12" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">POST /run · new user turn</text>
+<rect x="62" y="279" width="426" height="19" rx="4" fill="#f2f5ea" opacity="0.95"/>
+<text x="70" y="292" font-size="12" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">── STEP 1 · resolve the property, never guess codes ──</text>
+<rect x="1165" y="320" width="10" height="160" rx="3" fill="#8a4a12" opacity="0.85"/>
+<rect x="1395" y="352" width="10" height="96" rx="3" fill="#2e5d43" opacity="0.85"/>
+<polyline points="920,320 1170,320" fill="none" stroke="#1b2733" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="914.0" y="299.0" width="262" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="1045.0" y="313.0" text-anchor="middle" font-size="12" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">tool call · property-master lookup</text>
+<polyline points="1170,352 1400,352" fill="none" stroke="#2e5d43" stroke-width="2" marker-end="url(#arrg)"/>
+<rect x="1131.5" y="331.0" width="307" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="1285.0" y="345.0" text-anchor="middle" font-size="12" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">validated SELECT · metadata columns only</text>
+<polyline points="1400,384 1170,384" fill="none" stroke="#2e5d43" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrg)"/>
+<rect x="1146.5" y="363.0" width="277" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="1285.0" y="377.0" text-anchor="middle" font-size="12" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">codes: EPM · AM · display · currency</text>
+<polyline points="1170,416 920,416" fill="none" stroke="#1b2733" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<rect x="999.5" y="395.0" width="91" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="1045.0" y="409.0" text-anchor="middle" font-size="12" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">tool result</text>
+<rect x="62" y="451" width="760" height="19" rx="4" fill="#f2f5ea" opacity="0.95"/>
+<text x="70" y="464" font-size="12" fill="#5c6b60" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">step 1b · PMS questions add a second lookup: the PMS property code lives in a separate master view</text>
+<rect x="62" y="499" width="517" height="19" rx="4" fill="#f2f5ea" opacity="0.95"/>
+<text x="70" y="512" font-size="12" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">── STEP 2 · fact query with resolved codes injected as literals ──</text>
+<rect x="1165" y="540" width="10" height="220" rx="3" fill="#8a4a12" opacity="0.85"/>
+<rect x="1395" y="572" width="10" height="128" rx="3" fill="#2e5d43" opacity="0.85"/>
+<polyline points="920,540 1170,540" fill="none" stroke="#1b2733" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="906.5" y="519.0" width="277" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="1045.0" y="533.0" text-anchor="middle" font-size="12" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">tool call · finance / PMS metric SQL</text>
+<rect x="62" y="562" width="738" height="19" rx="4" fill="#f2f5ea" opacity="0.95"/>
+<text x="70" y="575" font-size="12" fill="#8a4a12" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">validate: sqlparse → allowlist → LIMIT → byte cap · reject = structured error back to the model</text>
+<polyline points="1170,604 1400,604" fill="none" stroke="#2e5d43" stroke-width="2" marker-end="url(#arrg)"/>
+<rect x="1131.5" y="583.0" width="307" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="1285.0" y="597.0" text-anchor="middle" font-size="12" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">validated SELECT · date-pushdown pattern</text>
+<polyline points="1400,668 1170,668" fill="none" stroke="#2e5d43" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrg)"/>
+<rect x="1120.5" y="647.0" width="329" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="1285.0" y="661.0" text-anchor="middle" font-size="12" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">rows + raw components (revenue · OAN · AAN)</text>
+<polyline points="1170,700 920,700" fill="none" stroke="#1b2733" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<rect x="899.0" y="679.0" width="292" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="1045.0" y="693.0" text-anchor="middle" font-size="12" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">tool result + KPI aggregation warnings</text>
+<rect x="62" y="735" width="266" height="19" rx="4" fill="#f2f5ea" opacity="0.95"/>
+<text x="70" y="748" font-size="12" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">── STEP 3 · grounded synthesis ──</text>
+<rect x="915" y="776" width="10" height="174" rx="3" fill="#1b2733" opacity="0.85"/>
+<rect x="62" y="777" width="821" height="19" rx="4" fill="#f2f5ea" opacity="0.95"/>
+<text x="70" y="790" font-size="12" fill="#8a4a12" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">sanity gate: occupancy &gt;100% or negative ⇒ present raw components + data-quality flag, NOT a confirmed KPI</text>
+<polyline points="920,830 660,830" fill="none" stroke="#1b2733" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<rect x="614.0" y="809.0" width="352" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="790.0" y="823.0" text-anchor="middle" font-size="12" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">final event: dual-currency answer + chart JSON</text>
+<polyline points="660,894 390,894" fill="none" stroke="#1b2733" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<rect x="453.5" y="873.0" width="143" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="525.0" y="887.0" text-anchor="middle" font-size="12" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">reply · chart spec</text>
+<polyline points="390,926 130,926" fill="none" stroke="#1b2733" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+<rect x="169.5" y="905.0" width="181" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="260.0" y="919.0" text-anchor="middle" font-size="12" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">rendered answer + chart</text>
+<rect x="62" y="997" width="1209" height="19" rx="4" fill="#f2f5ea" opacity="0.95"/>
+<text x="70" y="1010" font-size="12" fill="#a33a2a" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">failure paths: invalid SQL → structured rejection (model retries) · byte-cap breach → query never runs · empty result → agent states data gap, no fabrication</text>
+<text x="70" y="1060" font-size="12" fill="#5c6b60">Every tool call in the turn — including the agent's own metadata lookups — passes the identical validation pipeline.</text>
+<text x="70" y="1077" font-size="12" fill="#5c6b60">The model formats and reasons; arithmetic lives in SQL (SAFE_DIVIDE), and rates are never summed across grains.</text>
+</svg>

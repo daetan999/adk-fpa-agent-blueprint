@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1560 840" font-family="IBM Plex Sans, -apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1b2733"/></marker><marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e5d43"/></marker><marker id="arra" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a4a12"/></marker><marker id="arrr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a33a2a"/></marker></defs>
+<rect x="0" y="0" width="1560" height="840" rx="18" fill="#f2f5ea" stroke="#d8dfcd"/>
+<text x="44" y="52" font-size="15" letter-spacing="4" fill="#5c6b60" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace" font-weight="600">FP&amp;A AGENT · DEPLOYMENT VIEW</text>
+<text x="1516" y="52" text-anchor="end" font-size="13" fill="#8a958b" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">CURRENT · WORKBENCH DEV → TARGET · AGENT ENGINE</text>
+<rect x="40" y="84" width="730" height="660" rx="14" fill="none" stroke="#2e5d43" stroke-width="1.4" opacity="0.55" stroke-dasharray="7 5"/>
+<text x="58" y="111" font-size="12.5" letter-spacing="3" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace" font-weight="600">CURRENT · DEVELOPMENT (AS EVIDENCED IN CODE)</text>
+<rect x="60" y="140" width="330" height="172" rx="14" fill="#ffffff" stroke="#d8dfcd"/>
+<rect x="60" y="140" width="6" height="172" rx="3" fill="#1b2733"/>
+<text x="82" y="170" font-size="16" font-weight="700" fill="#16232e">Vertex AI Workbench</text>
+<text x="82" y="190" font-size="12.5" fill="#5c6b60">managed Jupyter VM</text>
+<text x="82" y="221" font-size="13" fill="#33413a">adk run / adk api_server</text>
+<text x="82" y="241" font-size="13" fill="#33413a">local functional test harness</text>
+<rect x="80" y="255" width="153" height="24" rx="7" fill="#eef0f3"/>
+<text x="90" y="272" font-size="11.5" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">dev sandbox project</text>
+<rect x="420" y="140" width="330" height="172" rx="14" fill="#ffffff" stroke="#d8dfcd"/>
+<rect x="420" y="140" width="6" height="172" rx="3" fill="#1b2733"/>
+<text x="442" y="170" font-size="16" font-weight="700" fill="#16232e">Next.js Dev Server</text>
+<text x="442" y="190" font-size="12.5" fill="#5c6b60">localhost frontend</text>
+<text x="442" y="221" font-size="13" fill="#33413a">ADK_API_BASE_URL →</text>
+<text x="442" y="241" font-size="13" fill="#33413a">http://localhost:8000</text>
+<rect x="440" y="255" width="90" height="24" rx="7" fill="#eef0f3"/>
+<text x="450" y="272" font-size="11.5" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">.env.local</text>
+<rect x="60" y="348" width="330" height="172" rx="14" fill="#ffffff" stroke="#d8dfcd"/>
+<rect x="60" y="348" width="6" height="172" rx="3" fill="#1b2733"/>
+<text x="82" y="378" font-size="16" font-weight="700" fill="#16232e">ADK API Server (local)</text>
+<text x="82" y="398" font-size="12.5" fill="#5c6b60">REST · sessions + /run</text>
+<text x="82" y="429" font-size="13" fill="#33413a">root agent + guarded tool</text>
+<text x="82" y="449" font-size="13" fill="#33413a">loaded in-process</text>
+<rect x="80" y="463" width="90" height="24" rx="7" fill="#eef2e4"/>
+<text x="90" y="480" font-size="11.5" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">google-adk</text>
+<rect x="420" y="348" width="330" height="172" rx="14" fill="#ffffff" stroke="#d8dfcd"/>
+<rect x="420" y="348" width="6" height="172" rx="3" fill="#1b2733"/>
+<text x="442" y="378" font-size="16" font-weight="700" fill="#16232e">Application Default Creds</text>
+<text x="442" y="398" font-size="12.5" fill="#5c6b60">user / workbench identity</text>
+<text x="442" y="429" font-size="13" fill="#33413a">BigQuery read via ADC — no</text>
+<text x="442" y="449" font-size="13" fill="#33413a">service keys on disk</text>
+<rect x="440" y="463" width="139" height="24" rx="7" fill="#eef2e4"/>
+<text x="450" y="480" font-size="11.5" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">IAM: BQ read-only</text>
+<rect x="60" y="556" width="690" height="152" rx="14" fill="#ffffff" stroke="#d8dfcd"/>
+<rect x="60" y="556" width="6" height="152" rx="3" fill="#1b2733"/>
+<text x="82" y="586" font-size="16" font-weight="700" fill="#16232e">BigQuery · Data Platform Project</text>
+<text x="82" y="606" font-size="12.5" fill="#5c6b60">the only stateful dependency</text>
+<text x="82" y="637" font-size="13" fill="#33413a">gold/silver analysis tables · byte-billing cap enforced per query</text>
+<rect x="80" y="651" width="132" height="24" rx="7" fill="#fdf1ef"/>
+<text x="90" y="668" font-size="11.5" fill="#a33a2a" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">MAX_BYTES_BILLED</text>
+<rect x="222" y="651" width="83" height="24" rx="7" fill="#eef2e4"/>
+<text x="232" y="668" font-size="11.5" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">read-only</text>
+<polyline points="420,226 390,226" fill="none" stroke="#1b2733" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="385.5" y="204.0" width="39" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="405.0" y="218.0" text-anchor="middle" font-size="12" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">REST</text>
+<polyline points="225,312 225,348" fill="none" stroke="#1b2733" stroke-width="2" marker-end="url(#arr)"/>
+<polyline points="225,520 225,556" fill="none" stroke="#1b2733" stroke-width="2" marker-end="url(#arr)"/>
+<polyline points="585,520 585,556" fill="none" stroke="#2e5d43" stroke-width="2" marker-end="url(#arrg)"/>
+<rect x="569.0" y="516.0" width="32" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="585.0" y="530.0" text-anchor="middle" font-size="12" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">ADC</text>
+<rect x="800" y="84" width="720" height="660" rx="14" fill="none" stroke="#8a4a12" stroke-width="1.4" opacity="0.55" stroke-dasharray="7 5"/>
+<text x="818" y="111" font-size="12.5" letter-spacing="3" fill="#8a4a12" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace" font-weight="600">TARGET · PRODUCTION (DESIGN — NOT YET DEPLOYED)</text>
+<rect x="820" y="140" width="330" height="172" rx="14" fill="#ffffff" stroke="#d8dfcd"/>
+<rect x="820" y="140" width="6" height="172" rx="3" fill="#1b2733"/>
+<text x="842" y="170" font-size="16" font-weight="700" fill="#16232e">Agent Engine</text>
+<text x="842" y="190" font-size="12.5" fill="#5c6b60">managed ADK hosting</text>
+<text x="842" y="221" font-size="13" fill="#33413a">root agent unchanged — same</text>
+<text x="842" y="241" font-size="13" fill="#33413a">instruction · same guarded tool</text>
+<rect x="840" y="255" width="146" height="24" rx="7" fill="#fbf7ec"/>
+<text x="850" y="272" font-size="11.5" fill="#8a4a12" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">swap base URL only</text>
+<rect x="1170" y="140" width="330" height="172" rx="14" fill="#ffffff" stroke="#d8dfcd"/>
+<rect x="1170" y="140" width="6" height="172" rx="3" fill="#1b2733"/>
+<text x="1192" y="170" font-size="16" font-weight="700" fill="#16232e">Cloud Run Frontend</text>
+<text x="1192" y="190" font-size="12.5" fill="#5c6b60">Next.js container</text>
+<text x="1192" y="221" font-size="13" fill="#33413a">IAP / SSO in front of the chat</text>
+<rect x="1190" y="235" width="139" height="24" rx="7" fill="#fbf7ec"/>
+<text x="1200" y="252" font-size="11.5" fill="#8a4a12" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">org-internal only</text>
+<rect x="820" y="348" width="330" height="172" rx="14" fill="#ffffff" stroke="#d8dfcd"/>
+<rect x="820" y="348" width="6" height="172" rx="3" fill="#1b2733"/>
+<text x="842" y="378" font-size="16" font-weight="700" fill="#16232e">Service Identity</text>
+<text x="842" y="398" font-size="12.5" fill="#5c6b60">dedicated service account</text>
+<text x="842" y="429" font-size="13" fill="#33413a">BQ read-only on approved</text>
+<text x="842" y="449" font-size="13" fill="#33413a">datasets · nothing else</text>
+<rect x="840" y="463" width="125" height="24" rx="7" fill="#eef2e4"/>
+<text x="850" y="480" font-size="11.5" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">least privilege</text>
+<rect x="1170" y="348" width="330" height="172" rx="14" fill="#ffffff" stroke="#d8dfcd"/>
+<rect x="1170" y="348" width="6" height="172" rx="3" fill="#1b2733"/>
+<text x="1192" y="378" font-size="16" font-weight="700" fill="#16232e">Gemini Enterprise</text>
+<text x="1192" y="398" font-size="12.5" fill="#5c6b60">governed model access</text>
+<text x="1192" y="429" font-size="13" fill="#33413a">env-driven model id — upgrade</text>
+<text x="1192" y="449" font-size="13" fill="#33413a">without redeploy</text>
+<rect x="1190" y="463" width="153" height="24" rx="7" fill="#eef0f3"/>
+<text x="1200" y="480" font-size="11.5" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">NARRATIVE_MODEL env</text>
+<rect x="820" y="556" width="680" height="152" rx="14" fill="#ffffff" stroke="#d8dfcd"/>
+<rect x="820" y="556" width="6" height="152" rx="3" fill="#1b2733"/>
+<text x="842" y="586" font-size="16" font-weight="700" fill="#16232e">Same BigQuery Surface</text>
+<text x="842" y="606" font-size="12.5" fill="#5c6b60">identical allowlist + caps</text>
+<text x="842" y="637" font-size="13" fill="#33413a">the guarded tool is environment-independent by construction</text>
+<rect x="840" y="651" width="195" height="24" rx="7" fill="#eef0f3"/>
+<text x="850" y="668" font-size="11.5" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">config.py is the contract</text>
+<polyline points="1170,226 1150,226" fill="none" stroke="#1b2733" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="1140.5" y="204.0" width="39" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="1160.0" y="218.0" text-anchor="middle" font-size="12" fill="#1b2733" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">REST</text>
+<polyline points="985,312 985,348" fill="none" stroke="#1b2733" stroke-width="2" marker-end="url(#arr)"/>
+<polyline points="985,520 985,556" fill="none" stroke="#1b2733" stroke-width="2" marker-end="url(#arr)"/>
+<polyline points="1335,520 1335,556" fill="none" stroke="#1b2733" stroke-width="2" marker-end="url(#arr)"/>
+<polyline points="770,414 800,414" fill="none" stroke="#8a4a12" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arra)"/>
+<rect x="728.0" y="392.0" width="114" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
+<text x="785.0" y="406.0" text-anchor="middle" font-size="12" fill="#8a4a12" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">promotion path</text>
+<text x="60" y="780" font-size="12" fill="#5c6b60">Honesty note: the production column is the design target evidenced by code comments and env contracts — the deployed reality at blueprint time is the development column.</text>
+</svg>

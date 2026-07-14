@@ -1,0 +1,9 @@
+property_code_epm,property_code_am,pms_property_code,display_name,property_group,brand,region,country,city,currency,property_status,ownership
+XX001,HSALP,HSAL01,Harborview Suites Alpha,Harborview,Harborview Suites,SEAA,Singapore,Singapore,SGD,Active,Owned
+XX002,HSBRV,HSBR01,Harborview Suites Bravo,Harborview,Harborview Suites,North Asia,South Korea,Seoul,KRW,Active,Managed
+XX003,CPCHL,CPCH01,City Pavilion Charlie,City Pavilion,City Pavilion,North Asia,China,Shanghai,CNY,Active,Managed
+XX004,CPDLT,CPDL01,City Pavilion Delta,City Pavilion,City Pavilion,SEAA,Malaysia,Kuala Lumpur,MYR,Active,Owned
+XX005,HSECH,HSEC01,Harborview Suites Echo,Harborview,Harborview Suites,EMEA,United Kingdom,London,GBP,Active,Third Party
+XX006,CPFXT,CPFX01,City Pavilion Foxtrot,City Pavilion,City Pavilion,EMEA,United Arab Emirates,Dubai,AED,Inactive,Managed
+XX007,HSGLF,HSGL01,Harborview Suites Golf,Harborview,Harborview Suites,SEAA,Australia,Sydney,AUD,Active,Owned
+XX008,CPHTL,CPHT01,City Pavilion Hotel,City Pavilion,City Pavilion,North Asia,Japan,Tokyo,JPY,Active,Managed
