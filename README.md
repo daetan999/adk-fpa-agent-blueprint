@@ -7,6 +7,10 @@
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue)](#)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](#)
 
+> **Portfolio** · [AI-infrastructure solutions-engineering hub](https://github.com/daetan999/technical_resume) · [value-engineering playbook — TCO / ROI](https://github.com/daetan999/technical_resume/blob/main/docs/value-engineering.md)
+>
+> **Infra-buyer's-eye value:** the LLM cost-governance and safety story every AI-infra buyer probes — a byte-billing cost cap, a frozen table allowlist, and single-SELECT parsing, so the agent can never run away with the warehouse bill or the data.
+
 ---
 
 ## Executive Summary
