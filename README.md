@@ -5,211 +5,139 @@
 [![BigQuery](https://img.shields.io/badge/BigQuery-guarded%20SQL-669DF6)](#)
 [![Next.js](https://img.shields.io/badge/Next.js-chat%20frontend-black)](#)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue)](#)
-[![License](https://img.shields.io/badge/license-MIT-lightgrey)](#)
 
-> **Portfolio** · [AI-infrastructure solutions-engineering hub](https://github.com/daetan999/technical_resume) · [value-engineering playbook — TCO / ROI](https://github.com/daetan999/technical_resume/blob/main/docs/value-engineering.md)
->
-> **Infra-buyer's-eye value:** the LLM cost-governance and safety story every AI-infra buyer probes — a byte-billing cost cap, a frozen table allowlist, and single-SELECT parsing, so the agent can never run away with the warehouse bill or the data.
+> Part of the [technical project portfolio](https://github.com/daetan999/technical_resume). Supporting material: [value-engineering playbook](https://github.com/daetan999/technical_resume/blob/main/docs/value-engineering.md).
 
----
+## Overview
 
-## Executive Summary
+This repository is a sanitized blueprint of a Google ADK agent for natural-language finance and operational analysis over governed BigQuery data.
 
-An LLM agent system on **Google's Agent Development Kit (ADK)** that lets finance and operations leaders at a multinational hospitality group ask natural-language questions — *"Compare ADR and RevPAR for Property Alpha, May, against budget, in local currency and group currency"* — and get **grounded, dual-currency answers with charts**, computed from governed BigQuery data.
+The application supports questions across P&L measures, budget variance, occupancy, ADR, RevPAR, and property performance. A Next.js interface communicates with an ADK API server, while every warehouse query passes through one guarded SQL tool before reaching approved BigQuery tables.
 
-The engineering thesis: **an analytics agent is only as trustworthy as the guardrails around its SQL.** Every number in every answer comes from deterministic SQL executed through a single guarded tool; the model reasons, plans, and narrates — it never does arithmetic and never touches the warehouse directly.
+The model plans and narrates. SQL calculates the numbers. The warehouse is never exposed directly to the model.
 
-- **Marketing-mix-modeling P&L analytics + PMS operational metrics** (occupancy, ADR, RevPAR) unified behind one conversational surface.
-- **Guarded SQL tool:** table allowlist as a `frozenset`, single-SELECT-only parsing, byte-billing cost cap, injected row limits, and KPI anti-summing warnings — validation the model cannot talk its way around.
-- **A documented lessons-learned engineering log** (below) showing how each failure class — code-system mismatches, scan-limit blowups, duplicate-row inflation, silent source fallbacks — was converted into a structural safeguard.
-- **Honest uncertainty:** an impossible computed result (occupancy > 100%) is presented as a flagged data-quality finding with raw components, never as an answer.
+## Public-Portfolio Boundary
 
----
+- Project IDs, datasets, tables, columns, property names, and codes are placeholders.
+- Sample data and numeric examples are synthetic.
+- Proprietary prompts, integrations, credentials, and internal endpoints are excluded.
+- Current development implementation and proposed production deployment are labelled separately.
+- Representative code preserves validation, control, and interface patterns without publishing production logic.
 
-## Data Security & Scope Disclaimer
+## System Topology
 
-> **Architectural Blueprint Notice:** This repository serves strictly as a sanitized, open-source structural blueprint demonstrating [system design, data architecture, and workflow automation]. All proprietary enterprise API integrations, sensitive webhooks, internal routing logic, and production access tokens have been completely omitted or mocked for security and compliance.
+![Agent topology](docs/assets/agent-topology.svg)
 
-All project IDs, dataset/table/column names, property names and codes, and every numeric figure in this repository are placeholders or fictional illustrations. The sample data is synthetic.
+The request path consists of:
 
----
+1. Next.js chat interface and server-side API route
+2. Google ADK API server and session state
+3. Gemini planning and tool invocation
+4. One guarded SQL execution path
+5. Approved BigQuery views and reference tables
+6. Structured answer and chart output
 
-## Visual Architecture
+## Request Lifecycle
 
-### System Topology — Chat UI → ADK Runtime → Guarded SQL → BigQuery
+![Agent request lifecycle](docs/assets/request-lifecycle.svg)
 
-![Agent topology: Next.js chat frontend calls the ADK API server; a single root agent with a Gemini model owns one guarded SQL tool whose validation pipeline fronts an approved-table BigQuery surface](docs/assets/agent-topology.svg)
+A typical question uses multiple controlled steps:
 
-<details>
-<summary><strong>Diagram-as-code source (Mermaid)</strong></summary>
+1. Resolve the requested property against an approved master table.
+2. Retrieve the source-specific identifier required by finance or property-management data.
+3. Generate a fact query using the resolved identifier as a filter.
+4. Validate and execute the query through the guarded tool.
+5. Return rows and raw KPI components to the agent.
+6. Produce a grounded answer and declarative chart specification.
 
-```mermaid
-flowchart LR
-    subgraph FE["Next.js Frontend"]
-        UI[Chat UI] --> RT["/api/chat route"]
-        RT --> AC[ADK REST client]
-        CR[ChartRenderer<br/>declarative JSON spec]
-    end
-    subgraph ADK["ADK Runtime"]
-        API[ADK API Server<br/>sessions · /run] --> AG[Root agent · fpa_finance_agent<br/>token-templated instruction]
-        AG <--> GM[Gemini · Vertex AI]
-        AG --- SS[Session state]
-    end
-    subgraph TOOL["Guarded SQL Tool · run_finance_sql"]
-        VAL[Validation pipeline<br/>sqlparse · single SELECT · allowlist<br/>LIMIT inject · byte cap · KPI warnings]
-        APPR[Approved tables · frozenset<br/>P&L view · 2 property masters<br/>reservations + OTB · 3 inventory]
-        BQ[(BigQuery · read-only)]
-    end
-    AC -->|REST| API
-    AG -->|generated SQL| VAL --> APPR -->|validated only| BQ
-    BQ -->|rows + raw components| AG
-    RT --> CR
-```
+## Guarded SQL Execution
 
-</details>
+All queries pass through the same validation pipeline:
 
-### Request Lifecycle — One Question, N Guarded Queries, One Grounded Answer
+| Control | Implementation |
+|---|---|
+| Statement restriction | Exactly one SQL statement and `SELECT` only |
+| Table access | Frozen allowlist of approved BigQuery objects |
+| Lookup discipline | Restricted metadata queries for property resolution |
+| Cost control | Per-query `MAX_BYTES_BILLED` cap |
+| Result volume | Row limits injected for unrestricted detail queries |
+| KPI semantics | Warnings for non-additive rates such as ADR, RevPAR, and occupancy |
+| Data quality | Impossible outputs are surfaced with raw components instead of silently corrected |
 
-![Sequence diagram: property-code resolution query first, then the fact query with resolved codes as literals, then grounded synthesis with a sanity gate on impossible values](docs/assets/request-lifecycle.svg)
+## Multi-System Property Resolution
 
-<details>
-<summary><strong>Diagram-as-code source (Mermaid)</strong></summary>
+Finance, asset-management, and property-management systems can use different identifiers for the same asset. The agent therefore avoids joining alias-rich master tables directly to facts.
 
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant FE as Next.js /api/chat
-    participant API as ADK API Server
-    participant AG as Agent (Gemini)
-    participant T as run_finance_sql
-    participant BQ as BigQuery
+- **Step 1:** resolve all approved identifiers from the relevant master.
+- **Step 1b:** resolve the separate property-management code when operational metrics are requested.
+- **Step 2:** query the fact table using the source-appropriate identifier as a literal filter.
 
-    U->>FE: message · userId · sessionId
-    FE->>API: ensure session → POST /run
-    API->>AG: new user turn
-    Note over AG,T: STEP 1 — resolve the property, never guess codes
-    AG->>T: property-master lookup
-    T->>BQ: validated SELECT (metadata columns only)
-    BQ-->>AG: codes: EPM · AM · display · currency
-    Note over AG,T: Step 1b — PMS questions resolve the PMS code<br/>from a separate master view
-    Note over AG,T: STEP 2 — fact query, resolved codes as literals
-    AG->>T: finance / PMS metric SQL
-    T->>T: sqlparse · allowlist · LIMIT · byte cap
-    T->>BQ: validated SELECT (date-pushdown pattern)
-    BQ-->>AG: rows + raw components (revenue · OAN · AAN)
-    Note over AG: STEP 3 — grounded synthesis<br/>occupancy >100% ⇒ flagged, not reported
-    AG-->>API: final event: answer + chart JSON
-    API-->>FE: reply · chart spec
-    FE-->>U: rendered answer + chart
-```
+This pattern prevents duplicate-row inflation, incorrect source selection, and zero-row answers caused by code-system mismatches.
 
-</details>
+## Current and Target Deployment
 
-### Deployment View — Current Development vs Target Production
+![Deployment view](docs/assets/deployment-view.svg)
 
-![Deployment view: current state is ADK api_server plus Next.js dev in Vertex AI Workbench against BigQuery via ADC; target state is Agent Engine hosting with a Cloud Run frontend and a dedicated least-privilege service identity](docs/assets/deployment-view.svg)
+### Current development implementation
 
-<details>
-<summary><strong>Diagram-as-code source (Mermaid)</strong></summary>
+- ADK API server in a development environment
+- Next.js development frontend
+- Read-only BigQuery access through application credentials
+- Single guarded SQL tool shared across query families
 
-```mermaid
-flowchart LR
-    subgraph CUR["CURRENT · development (as evidenced in code)"]
-        WB[Vertex AI Workbench] --> LADK[adk api_server · local]
-        DEV[Next.js dev server] -->|localhost REST| LADK
-        LADK -->|ADC · read-only| BQ1[(BigQuery · data platform)]
-    end
-    subgraph TGT["TARGET · production (design — not yet deployed)"]
-        AE[Agent Engine · managed ADK] --- SA[dedicated service identity<br/>BQ read-only · least privilege]
-        FRONT[Cloud Run frontend · IAP/SSO] -->|REST| AE
-        AE -->|same guarded tool| BQ2[(same BigQuery surface)]
-    end
-    CUR -.promotion = swap base URL.-> TGT
-```
+### Target production design
 
-</details>
+- Managed ADK or agent hosting
+- Cloud Run frontend
+- Enterprise authentication and authorization
+- Dedicated least-privilege service identity
+- Central monitoring and evaluation harness
 
----
+The target state is an architecture design and is not represented as already deployed.
+
+## Development Lessons Converted into Controls
+
+| Failure class | Structural response |
+|---|---|
+| Alias-rich joins duplicated room counts | Two-step property resolution; master-to-fact joins avoided |
+| Reservation expansion exceeded the byte cap | Date-filter pushdown before expansion |
+| Finance identifiers were used against operational tables | Source-specific code resolution |
+| Rate measures were summed | Additive and non-additive measure semantics enforced |
+| Operational questions fell back to finance data | Source-selection rules and approved operational tables |
+| Duplicate reservations produced impossible occupancy | Deduplication before stay-night expansion |
+| Genuine source gaps still produced impossible values | Sanity gate reports the finding with raw components |
+
+The longer engineering log is available in [`docs/lessons-learned.md`](docs/lessons-learned.md).
 
 ## Technology Stack
 
-| Layer | Technology | Why it earns its place |
-|---|---|---|
-| Agent framework | **Google ADK** | Session management, the tool-calling loop, and a REST surface come free — the repo's code is almost entirely domain logic. |
-| Model | **Gemini (Vertex AI)** | Env-driven model id means upgrades are a config change, not a redeploy. |
-| Guarded execution | **`run_finance_sql` (single tool)** | One choke point for every query makes the security story auditable: no allowlisted table, no execution. |
-| SQL analysis | **sqlparse** | Cheap structural parsing rejects multi-statement and non-SELECT input before anything reaches BigQuery. |
-| Warehouse | **BigQuery** | The existing data platform's gold/silver views are the source of truth — the agent adds zero data copies. |
-| Cost control | **`MAX_BYTES_BILLED`** | A hard per-query byte cap converts an expensive mistake into a refused query. |
-| Frontend | **Next.js** | Server-side API route keeps the ADK endpoint private; the chart contract is declarative JSON rendered client-side. |
-
----
-
-## The Guarded SQL Tool
-
-Every query — including the agent's own metadata lookups — passes one validation pipeline:
-
-1. **Parse:** `sqlparse` must yield exactly one statement, and it must be a `SELECT`.
-2. **Allowlist:** every referenced table must be in the `APPROVED_TABLES` frozenset. Unknown table ⇒ structured rejection the model can read and correct.
-3. **Lookup discipline:** property-master tables may be queried standalone for metadata resolution, restricted to an approved column set — the validator distinguishes "code lookup" from "fact query" shapes.
-4. **Cost + volume:** `MAX_BYTES_BILLED` caps every execution; detail queries without a `LIMIT` get one injected.
-5. **Semantics:** rate measures (ADR, RevPAR, Occ%) trigger anti-summing warnings attached to the tool result, keeping the model honest about aggregation.
-
-## Two-Step Property Resolution
-
-Property identity is the hardest problem in multi-source hospitality data: the EPM finance cube, the asset-management ledger, and the PMS each use **different code systems** for the same building, and the property master contains historical and alias codes that make naive JOINs explode row counts.
-
-The agent is therefore forbidden from joining masters to facts. Instead:
-
-- **Step 1:** standalone lookup against the property master → collect *all* known codes (EPM, AM, display name, currency).
-- **Step 1b:** for PMS questions, resolve the PMS property code from a *separate* master view — it exists nowhere else.
-- **Step 2:** inject the source-appropriate code into the fact query `WHERE` clause as a literal.
-
-## Lessons-Learned Engineering Log
-
-The repository's development history is preserved as a sanitized engineering log — each production failure became a structural safeguard. Figures are fictional illustrations of the real failure shapes.
-
-| # | Failure observed | Root cause | Structural fix |
-|---|---|---|---|
-| 1 | Region grouping duplicated room counts and deflated ADR | JOINing the alias-rich property master to fact tables | Strict two-step querying; JOINs to facts rejected by the validator |
-| 2 | Reservation query crashed the byte cap | `UNNEST` date explosion before filtering scanned full history | **Date-filter pushdown** before the `UNNEST`; cap kept as backstop |
-| 3 | Confident "0 rows / data not available" | Finance-cube code used against PMS tables | Per-source code resolution (Step 1/1b above) |
-| 4 | Same data double-counted | Mixing current + historical codes with `IN (...)` | Fact queries filter on exactly one source-appropriate code |
-| 5 | ADR of 200 became "6,000" | `SUM()` over a rate measure | Additive vs non-additive measure semantics in config; `SAFE_DIVIDE` on raw components |
-| 6 | Answers in one currency only | No dual-currency SQL example | Local + group-currency computed in one query, formatted together |
-| 7 | PMS questions silently answered from finance data | Contradictory instruction rules + missing inventory tables | Availability tables added to the allowlist; contradiction removed; source stated in every answer |
-| 8 | PMS queries returned zero rows for a valid property | The "PMS code" column didn't exist; a display-name column was mistaken for a code | Diagnostic-proven column map; phantom columns deleted from config |
-| 9 | Occupancy computed at 187% | Duplicate reservation rows counted twice | `SELECT DISTINCT` before `UNNEST` (matches the reference reporting engine); raw components always returned |
-| 10 | Occupancy still >100% for one property | Genuine nightly gaps in inventory coverage — under investigation | **Sanity gate:** impossible values are presented as flagged findings with raw components, never as answers |
-| 11 | — (validation) | — | End-to-end pipeline proven on a second property: sane occupancy, clean per-night availability |
-
-The full narrative, including dead ends and the diagnostic SQL patterns, lives in [`docs/lessons-learned.md`](docs/lessons-learned.md).
-
----
+| Layer | Technology |
+|---|---|
+| Agent framework | Google ADK |
+| Model | Gemini on Vertex AI |
+| Warehouse | BigQuery |
+| SQL parsing | sqlparse |
+| Frontend | Next.js |
+| API | ADK API server |
+| Cost guardrail | `MAX_BYTES_BILLED` |
 
 ## Repository Map
 
+```text
+app/agent.py          Root agent definition and tool wiring
+app/bq_tool.py        Guarded SQL validation and execution structure
+app/config.py         Approved tables, measure semantics, and calendar rules
+frontend/             Next.js chat interface and chart renderer
+data/                 Synthetic property-master examples
+docs/                 Architecture diagrams and lessons-learned log
 ```
-app/agent.py          Root agent: token-templated instruction · tool wiring (illustrative)
-app/bq_tool.py        The guarded SQL tool: validation pipeline skeleton
-app/config.py         The contract: approved tables · measure semantics · fiscal calendar
-frontend/             Next.js chat surface: /api/chat route · ADK client · ChartRenderer
-data/                 Synthetic sample of the property-master shape (fictional rows)
-docs/                 Lessons-learned log · SVG diagrams
-```
 
-All code here is **illustrative blueprint code**: interfaces, configuration shapes, and engineering conventions — no proprietary prompts, data, or credentials. Redacted internals raise `NotImplementedError("Blueprint stub — proprietary transformation omitted")`.
+## Extension Paths
 
----
-
-## Extensibility Roadmap
-
-- **Agent Engine deployment** — the promotion path is a base-URL swap by design; the guarded tool is environment-independent.
-- **Multi-agent decomposition** — a planner/executor split becomes attractive once query families grow; the single guarded tool remains the shared choke point.
-- **Semantic-layer contract** — measure semantics (additive vs rate) already live in config; lifting them into a shared semantic layer would serve BI and the agent from one definition.
-- **Evaluation harness** — the curated test-question set is the seed of a regression suite scoring groundedness and source-selection correctness per release.
-
----
+- Managed agent deployment
+- Planner and executor separation for larger query families
+- Shared semantic layer for BI and agent use
+- Regression evaluation for groundedness, source selection, and KPI correctness
 
 ## License
 
