@@ -1,0 +1,6 @@
+interface:
+  display_name: "Adk Fpa Agent Blueprint"
+  short_description: "Repo-specific patterns and workflows for adk-fpa-agent-blueprint"
+  default_prompt: "Use the adk-fpa-agent-blueprint repo skill to follow existing architecture, testing, and workflow conventions."
+policy:
+  allow_implicit_invocation: true
