@@ -1,20 +1,31 @@
-# Agentic FP&A Analytics — Google ADK Agent Blueprint
+# Agentic FP&A Analytics — Governed Application Blueprint
 
-[![Google ADK](https://img.shields.io/badge/Google%20ADK-agent-4285F4)](#)
-[![Gemini](https://img.shields.io/badge/Gemini-Vertex%20AI-8E75B2)](#)
-[![BigQuery](https://img.shields.io/badge/BigQuery-guarded%20SQL-669DF6)](#)
-[![Next.js](https://img.shields.io/badge/Next.js-chat%20frontend-black)](#)
-[![Python](https://img.shields.io/badge/python-3.11%2B-blue)](#)
-
-> Part of the [technical project portfolio](https://github.com/daetan999/technical_resume). Supporting material: [value-engineering playbook](https://github.com/daetan999/technical_resume/blob/main/docs/value-engineering.md).
+[Control contracts](app/config.py) · [Lessons learned](docs/lessons-learned.md) · [Portfolio](https://github.com/daetan999/technical_resume)
 
 ## Overview
 
-This repository is a sanitized blueprint of a Google ADK agent for natural-language finance and operational analysis over governed BigQuery data.
+This repository is a sanitized reference design for a Google ADK agent that performs natural-language finance and operational analysis over governed BigQuery data.
 
-The application supports questions across P&L measures, budget variance, occupancy, ADR, RevPAR, and property performance. A Next.js interface communicates with an ADK API server, while every warehouse query passes through one guarded SQL tool before reaching approved BigQuery tables.
+The design covers questions across P&L measures, budget variance, occupancy, ADR, RevPAR, and property performance. It defines a Next.js-to-ADK request boundary and a single guarded SQL path to approved BigQuery tables.
 
-The model plans and narrates. SQL calculates the numbers. The warehouse is never exposed directly to the model.
+The governing principle is simple: the model plans and narrates; SQL calculates the numbers. The model cannot issue direct warehouse requests, although approved query results would still enter model context for synthesis.
+
+## Portfolio Role
+
+This is the governed enterprise-application layer of the [Enterprise AI Infrastructure Portfolio](https://github.com/daetan999/technical_resume). It demonstrates how application controls, warehouse semantics, cost limits, data quality, and identity boundaries constrain an agentic workflow before infrastructure and commercial recommendations can be trusted.
+
+## Published Artifact Status
+
+This repository is a **control blueprint**, not a runnable end-to-end application.
+
+| Available here | Not implemented in the public tree |
+|---|---|
+| Approved-table, KPI, calendar, and lookup contracts | BigQuery execution and structural SQL enforcement |
+| ADK agent/tool interface shapes | Complete agent instruction and runnable ADK workflow |
+| Server-side Next.js proxy boundary | Page, chart renderer, package manifest, and working client response parser |
+| Synthetic property-master example and architecture diagrams | Authentication, session ownership, deployment, and evaluation harness |
+
+Source paths marked as blueprint stubs are intentionally non-runnable. The controls below are design requirements unless a linked public function implements them directly.
 
 ## Public-Portfolio Boundary
 
@@ -24,11 +35,11 @@ The model plans and narrates. SQL calculates the numbers. The warehouse is never
 - Current development implementation and proposed production deployment are labelled separately.
 - Representative code preserves validation, control, and interface patterns without publishing production logic.
 
-## System Topology
+## Reference System Topology
 
 ![Agent topology](docs/assets/agent-topology.svg)
 
-The request path consists of:
+The target request path consists of:
 
 1. Next.js chat interface and server-side API route
 2. Google ADK API server and session state
@@ -41,7 +52,7 @@ The request path consists of:
 
 ![Agent request lifecycle](docs/assets/request-lifecycle.svg)
 
-A typical question uses multiple controlled steps:
+A complete implementation would use these controlled steps:
 
 1. Resolve the requested property against an approved master table.
 2. Retrieve the source-specific identifier required by finance or property-management data.
@@ -52,17 +63,17 @@ A typical question uses multiple controlled steps:
 
 ## Guarded SQL Execution
 
-All queries pass through the same validation pipeline:
+The public contracts require every query to pass through one validation pipeline. Enforcement is not implemented in this repository.
 
-| Control | Implementation |
-|---|---|
-| Statement restriction | Exactly one SQL statement and `SELECT` only |
-| Table access | Frozen allowlist of approved BigQuery objects |
-| Lookup discipline | Restricted metadata queries for property resolution |
-| Cost control | Per-query `MAX_BYTES_BILLED` cap |
-| Result volume | Row limits injected for unrestricted detail queries |
-| KPI semantics | Warnings for non-additive rates such as ADR, RevPAR, and occupancy |
-| Data quality | Impossible outputs are surfaced with raw components instead of silently corrected |
+| Control contract | Required behavior | Public status |
+|---|---|---|
+| Statement restriction | Exactly one SQL statement and `SELECT` only | Documented; validator stub |
+| Table access | Frozen allowlist of approved BigQuery objects | Allowlist declared; enforcement stub |
+| Lookup discipline | Restricted metadata queries for property resolution | Rules declared; enforcement stub |
+| Cost control | Per-query `MAX_BYTES_BILLED` cap | Constant declared; job configuration omitted |
+| Result volume | Row limits injected for unrestricted detail queries | Documented; injection omitted |
+| KPI semantics | Warn on non-additive rates such as ADR, RevPAR, and occupancy | Measure sets declared; warnings omitted |
+| Data quality | Surface impossible outputs with raw components | Documented; sanity gate omitted |
 
 ## Multi-System Property Resolution
 
@@ -74,16 +85,16 @@ Finance, asset-management, and property-management systems can use different ide
 
 This pattern prevents duplicate-row inflation, incorrect source selection, and zero-row answers caused by code-system mismatches.
 
-## Current and Target Deployment
+## Public Artifact and Target Deployment
 
 ![Deployment view](docs/assets/deployment-view.svg)
 
-### Current development implementation
+### Published public artifact
 
-- ADK API server in a development environment
-- Next.js development frontend
-- Read-only BigQuery access through application credentials
-- Single guarded SQL tool shared across query families
+- Python configuration and interface skeletons
+- Partial Next.js server-side proxy and client boundary
+- Synthetic property-master data
+- Architecture and request-lifecycle documentation
 
 ### Target production design
 
@@ -93,19 +104,19 @@ This pattern prevents duplicate-row inflation, incorrect source selection, and z
 - Dedicated least-privilege service identity
 - Central monitoring and evaluation harness
 
-The target state is an architecture design and is not represented as already deployed.
+The target state is an architecture design and is not represented as already deployed. The public tree also does not constitute a runnable development deployment.
 
 ## Development Lessons Converted into Controls
 
-| Failure class | Structural response |
+| Failure class | Blueprint response |
 |---|---|
-| Alias-rich joins duplicated room counts | Two-step property resolution; master-to-fact joins avoided |
-| Reservation expansion exceeded the byte cap | Date-filter pushdown before expansion |
-| Finance identifiers were used against operational tables | Source-specific code resolution |
-| Rate measures were summed | Additive and non-additive measure semantics enforced |
-| Operational questions fell back to finance data | Source-selection rules and approved operational tables |
-| Duplicate reservations produced impossible occupancy | Deduplication before stay-night expansion |
-| Genuine source gaps still produced impossible values | Sanity gate reports the finding with raw components |
+| Alias-rich joins duplicate room counts | Require two-step property resolution and avoid master-to-fact joins |
+| Reservation expansion exceeds the byte cap | Require date-filter pushdown before expansion |
+| Finance identifiers are used against operational tables | Resolve source-specific codes first |
+| Rate measures are summed | Separate additive and non-additive measure semantics |
+| Operational questions fall back to finance data | Require source-selection rules and approved operational tables |
+| Duplicate reservations produce impossible occupancy | Require deduplication before stay-night expansion |
+| Genuine source gaps still produce impossible values | Return raw components and data-quality flags |
 
 The longer engineering log is available in [`docs/lessons-learned.md`](docs/lessons-learned.md).
 
@@ -124,13 +135,42 @@ The longer engineering log is available in [`docs/lessons-learned.md`](docs/less
 ## Repository Map
 
 ```text
-app/agent.py          Root agent definition and tool wiring
-app/bq_tool.py        Guarded SQL validation and execution structure
-app/config.py         Approved tables, measure semantics, and calendar rules
-frontend/             Next.js chat interface and chart renderer
-data/                 Synthetic property-master examples
-docs/                 Architecture diagrams and lessons-learned log
+app/agent.py                         Root-agent interface and placeholder instruction
+app/bq_tool.py                       Guarded SQL interface with explicit execution stubs
+app/config.py                        Approved tables, measure semantics, and calendar rules
+frontend/src/app/api/chat/route.ts   Development proxy boundary
+frontend/src/lib/adkClient.ts        Partial ADK session/response client
+data/                                Synthetic property-master example
+docs/                                Reference diagrams and lessons-learned log
 ```
+
+## Repository Verification
+
+The published Python syntax, synthetic fixture, and SVG assets can be checked without cloud credentials:
+
+```bash
+python -m compileall app
+python - <<'PY'
+from pathlib import Path
+import csv
+import xml.etree.ElementTree as ET
+
+rows = list(csv.DictReader(Path("data/sample_property_master.csv").open()))
+assert rows and all(row["property_name"] for row in rows)
+for diagram in Path("docs/assets").glob("*.svg"):
+    ET.parse(diagram)
+print("Published blueprint assets verified")
+PY
+```
+
+These checks do not validate ADK, Next.js, BigQuery, authentication, or the guarded execution path because the required implementations and manifests are not present.
+
+## Limitations
+
+- The public repository cannot currently be installed or run as an application.
+- SQL parsing comments and regex extraction are not sufficient security boundaries for BigQuery.
+- Client-supplied user and session identifiers require authentication, ownership checks, validation, encoding, timeouts, and safe error handling in a real deployment.
+- The reference design requires executable guardrail tests before any finance or operational use.
 
 ## Extension Paths
 
@@ -142,3 +182,7 @@ docs/                 Architecture diagrams and lessons-learned log
 ## License
 
 Released under the MIT License.
+
+---
+
+[Part of the Enterprise AI Infrastructure Portfolio](https://github.com/daetan999/technical_resume)

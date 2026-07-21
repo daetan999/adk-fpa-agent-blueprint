@@ -2,9 +2,9 @@
 <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1b2733"/></marker><marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e5d43"/></marker><marker id="arra" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a4a12"/></marker><marker id="arrr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a33a2a"/></marker></defs>
 <rect x="0" y="0" width="1560" height="840" rx="18" fill="#f2f5ea" stroke="#d8dfcd"/>
 <text x="44" y="52" font-size="15" letter-spacing="4" fill="#5c6b60" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace" font-weight="600">FP&amp;A AGENT · DEPLOYMENT VIEW</text>
-<text x="1516" y="52" text-anchor="end" font-size="13" fill="#8a958b" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">CURRENT · WORKBENCH DEV → TARGET · AGENT ENGINE</text>
+<text x="1516" y="52" text-anchor="end" font-size="13" fill="#8a958b" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">REFERENCE DEV → TARGET PRODUCTION</text>
 <rect x="40" y="84" width="730" height="660" rx="14" fill="none" stroke="#2e5d43" stroke-width="1.4" opacity="0.55" stroke-dasharray="7 5"/>
-<text x="58" y="111" font-size="12.5" letter-spacing="3" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace" font-weight="600">CURRENT · DEVELOPMENT (AS EVIDENCED IN CODE)</text>
+<text x="58" y="111" font-size="12.5" letter-spacing="3" fill="#2e5d43" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace" font-weight="600">REFERENCE DEVELOPMENT TOPOLOGY · NOT RUNNABLE HERE</text>
 <rect x="60" y="140" width="330" height="172" rx="14" fill="#ffffff" stroke="#d8dfcd"/>
 <rect x="60" y="140" width="6" height="172" rx="3" fill="#1b2733"/>
 <text x="82" y="170" font-size="16" font-weight="700" fill="#16232e">Vertex AI Workbench</text>
@@ -103,5 +103,5 @@
 <polyline points="770,414 800,414" fill="none" stroke="#8a4a12" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arra)"/>
 <rect x="728.0" y="392.0" width="114" height="20" rx="4" fill="#f2f5ea" opacity="0.92"/>
 <text x="785.0" y="406.0" text-anchor="middle" font-size="12" fill="#8a4a12" font-family="IBM Plex Mono, ui-monospace, Menlo, monospace">promotion path</text>
-<text x="60" y="780" font-size="12" fill="#5c6b60">Honesty note: the production column is the design target evidenced by code comments and env contracts — the deployed reality at blueprint time is the development column.</text>
+<text x="60" y="780" font-size="12" fill="#5c6b60">Artifact note: both columns are architectural references. The public tree contains partial interfaces and contracts, not either deployed environment.</text>
 </svg>

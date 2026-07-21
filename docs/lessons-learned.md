@@ -1,8 +1,11 @@
 # Lessons-Learned Engineering Log
 
+> **Public-artifact boundary:** this retrospective records the failure modes and control requirements that shaped the reference architecture. In this repository, most validator, execution, client, and sanity-gate paths are explicit blueprint stubs. Treat the controls below as design requirements and sanitized operating lessons—not as claims that the public code enforces them end to end.
+
 The full narrative behind the README's summary table. Every figure below is a
 **fictional illustration** of the real failure shape; every fix is real and
-lives in the config/validator contracts.
+is represented as a design or configuration contract. Enforcement code is not
+published unless the referenced source path implements it directly.
 
 ## 1 · JOIN explosion (data duplication)
 
