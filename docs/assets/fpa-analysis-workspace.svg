@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Governed FP&amp;A analysis workspace</title>
+  <desc id="desc">A dark navy and white reconstructed finance analysis interface using synthetic portfolio data.</desc>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#06111f"/>
+      <stop offset="1" stop-color="#0a1b2e"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#10253b"/>
+      <stop offset="1" stop-color="#0b1c2f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000713" flood-opacity=".34"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" rx="24" fill="url(#canvas)"/>
+  <rect x="0" y="0" width="248" height="1000" rx="24" fill="#081625"/>
+  <path d="M248 0v1000" stroke="#203a52"/>
+
+  <text x="34" y="54" fill="#f5f8fb" font-family="Georgia, Times New Roman, serif" font-size="22" font-weight="700">NORTHSTAR</text>
+  <text x="34" y="78" fill="#7192ad" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="10" font-weight="700" letter-spacing="2.8">FINANCE INTELLIGENCE</text>
+
+  <text x="34" y="137" fill="#57758f" font-family="IBM Plex Mono, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="1.8">WORKSPACES</text>
+  <rect x="20" y="158" width="208" height="46" rx="9" fill="#eaf2f8"/>
+  <rect x="20" y="158" width="4" height="46" rx="2" fill="#5b9ccd"/>
+  <circle cx="44" cy="181" r="7" fill="none" stroke="#0d2941" stroke-width="1.7"/>
+  <path d="M40 181h8M44 177v8" stroke="#0d2941" stroke-width="1.5"/>
+  <text x="62" y="186" fill="#0a2034" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="13" font-weight="700">Analysis desk</text>
+
+  <g fill="#91a9bc" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="13">
+    <text x="62" y="239">Portfolio pulse</text>
+    <text x="62" y="286">Budget variance</text>
+    <text x="62" y="333">Property review</text>
+    <text x="62" y="380">Revenue quality</text>
+  </g>
+  <g fill="none" stroke="#68859d" stroke-width="1.5">
+    <rect x="37" y="226" width="14" height="14" rx="2"/>
+    <path d="M39 283h12M39 278h7M39 288h9"/>
+    <path d="M38 329h13v11H38zM41 329v-4h7v4"/>
+    <path d="M38 376l4-5 4 3 6-8"/>
+  </g>
+
+  <text x="34" y="458" fill="#57758f" font-family="IBM Plex Mono, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="1.8">CONTROL LAYER</text>
+  <g font-family="IBM Plex Mono, Menlo, monospace" font-size="10.5">
+    <circle cx="42" cy="490" r="4" fill="#8fb8d6"/>
+    <text x="55" y="494" fill="#b8cad8">Approved views only</text>
+    <circle cx="42" cy="523" r="4" fill="#8fb8d6"/>
+    <text x="55" y="527" fill="#b8cad8">Read-only identity</text>
+    <circle cx="42" cy="556" r="4" fill="#8fb8d6"/>
+    <text x="55" y="560" fill="#b8cad8">Query cost capped</text>
+  </g>
+
+  <rect x="20" y="899" width="208" height="72" rx="10" fill="#0e2236" stroke="#29445b"/>
+  <circle cx="49" cy="926" r="9" fill="#eaf2f8"/>
+  <path d="M45 926h8M49 922v8" stroke="#0a2034" stroke-width="1.4"/>
+  <text x="68" y="923" fill="#f5f8fb" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="12.5" font-weight="700">Governed session</text>
+  <text x="68" y="943" fill="#6f91aa" font-family="IBM Plex Mono, Menlo, monospace" font-size="9.5">SQL calculates · AI explains</text>
+
+  <text x="292" y="58" fill="#6e8da6" font-family="IBM Plex Mono, Menlo, monospace" font-size="10.5" font-weight="700" letter-spacing="2.2">ANALYSIS DESK / QUARTER CLOSE</text>
+  <text x="292" y="101" fill="#f5f8fb" font-family="Georgia, Times New Roman, serif" font-size="34" font-weight="700">Portfolio performance</text>
+  <text x="1308" y="63" fill="#8aa7bd" font-family="IBM Plex Mono, Menlo, monospace" font-size="10">DATA THROUGH 30 JUN · 06:10 UTC</text>
+
+  <rect x="292" y="132" width="1264" height="96" rx="13" fill="#0d2135" stroke="#2a475e"/>
+  <text x="318" y="158" fill="#6f8ea7" font-family="IBM Plex Mono, Menlo, monospace" font-size="9.5" font-weight="700" letter-spacing="1.6">ANALYSIS REQUEST</text>
+  <text x="318" y="194" fill="#f6f9fc" font-family="Georgia, Times New Roman, serif" font-size="18">Compare Q2 RevPAR to budget across Southeast Asia. Explain the variance.</text>
+  <rect x="1400" y="151" width="132" height="56" rx="10" fill="#edf4f9"/>
+  <text x="1466" y="184" text-anchor="middle" fill="#0a2034" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="12.5" font-weight="800" letter-spacing=".6">RUN ANALYSIS</text>
+
+  <g filter="url(#shadow)">
+    <rect x="292" y="258" width="294" height="126" rx="13" fill="url(#panel)" stroke="#29465e"/>
+    <rect x="606" y="258" width="294" height="126" rx="13" fill="url(#panel)" stroke="#29465e"/>
+    <rect x="920" y="258" width="294" height="126" rx="13" fill="url(#panel)" stroke="#29465e"/>
+    <rect x="1234" y="258" width="322" height="126" rx="13" fill="url(#panel)" stroke="#29465e"/>
+  </g>
+  <g font-family="IBM Plex Mono, Menlo, monospace" font-size="9.5" font-weight="700" letter-spacing="1.4" fill="#6d8ca5">
+    <text x="316" y="286">NET REVENUE</text>
+    <text x="630" y="286">GROSS OPERATING PROFIT</text>
+    <text x="944" y="286">REVPAR</text>
+    <text x="1258" y="286">SOURCE HEALTH</text>
+  </g>
+  <g fill="#f5f8fb" font-family="Georgia, Times New Roman, serif" font-size="28" font-weight="700">
+    <text x="316" y="332">$86.4M</text>
+    <text x="630" y="332">$28.1M</text>
+    <text x="944" y="332">$162.40</text>
+    <text x="1258" y="332">12 / 12</text>
+  </g>
+  <g font-family="IBM Plex Mono, Menlo, monospace" font-size="10.5">
+    <text x="316" y="360" fill="#a9c9df">+4.8% vs budget</text>
+    <text x="630" y="360" fill="#c2d2df">−1.6% vs budget</text>
+    <text x="944" y="360" fill="#c2d2df">−3.2% vs budget</text>
+    <text x="1258" y="360" fill="#a9c9df">all approved views current</text>
+  </g>
+
+  <rect x="292" y="414" width="790" height="536" rx="15" fill="#0a1b2d" stroke="#29465e"/>
+  <text x="320" y="450" fill="#f5f8fb" font-family="Georgia, Times New Roman, serif" font-size="20" font-weight="700">RevPAR by property</text>
+  <text x="320" y="474" fill="#6f8ea7" font-family="IBM Plex Mono, Menlo, monospace" font-size="9.5">ACTUAL VS BUDGET · SYNTHETIC USD VALUES</text>
+  <rect x="869" y="438" width="12" height="12" rx="2" fill="#eaf2f8"/>
+  <text x="889" y="448" fill="#9db4c7" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="10.5">Actual</text>
+  <rect x="960" y="438" width="12" height="12" rx="2" fill="none" stroke="#5e9bc8" stroke-width="2"/>
+  <text x="980" y="448" fill="#9db4c7" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="10.5">Budget</text>
+
+  <g stroke="#1e3850" stroke-width="1">
+    <path d="M410 522h624M410 599h624M410 676h624M410 753h624M410 830h624"/>
+  </g>
+  <g fill="#91a9bc" font-family="IBM Plex Mono, Menlo, monospace" font-size="10.5">
+    <text x="320" y="547">NS-SG01</text>
+    <text x="320" y="624">NS-SG02</text>
+    <text x="320" y="701">NS-MY01</text>
+    <text x="320" y="778">NS-TH01</text>
+    <text x="320" y="855">NS-VN01</text>
+  </g>
+  <g fill="#edf4f9">
+    <rect x="410" y="528" width="514" height="20" rx="3"/>
+    <rect x="410" y="605" width="472" height="20" rx="3"/>
+    <rect x="410" y="682" width="398" height="20" rx="3"/>
+    <rect x="410" y="759" width="438" height="20" rx="3"/>
+    <rect x="410" y="836" width="366" height="20" rx="3"/>
+  </g>
+  <g fill="none" stroke="#5e9bc8" stroke-width="2">
+    <rect x="410" y="555" width="486" height="10" rx="2"/>
+    <rect x="410" y="632" width="493" height="10" rx="2"/>
+    <rect x="410" y="709" width="422" height="10" rx="2"/>
+    <rect x="410" y="786" width="474" height="10" rx="2"/>
+    <rect x="410" y="863" width="390" height="10" rx="2"/>
+  </g>
+  <g fill="#d5e3ed" font-family="IBM Plex Mono, Menlo, monospace" font-size="10.5">
+    <text x="938" y="544">+5.8%</text>
+    <text x="916" y="621">−4.3%</text>
+    <text x="842" y="698">−5.7%</text>
+    <text x="878" y="775">−7.6%</text>
+    <text x="810" y="852">−6.2%</text>
+  </g>
+  <text x="320" y="918" fill="#6f8ea7" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="11.5">Rates recomputed from room revenue and available room nights; non-additive measures are not summed.</text>
+
+  <rect x="1112" y="414" width="444" height="536" rx="15" fill="#f3f7fa"/>
+  <text x="1142" y="451" fill="#0a2034" font-family="Georgia, Times New Roman, serif" font-size="20" font-weight="700">Variance brief</text>
+  <rect x="1423" y="431" width="103" height="26" rx="13" fill="#dceaf4"/>
+  <text x="1474" y="448" text-anchor="middle" fill="#174263" font-family="IBM Plex Mono, Menlo, monospace" font-size="9" font-weight="700">GROUNDED</text>
+
+  <text x="1142" y="494" fill="#19364d" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="13.2">
+    <tspan x="1142" dy="0">Q2 portfolio RevPAR finished 3.2% below</tspan>
+    <tspan x="1142" dy="22">budget. Singapore North offset part of the</tspan>
+    <tspan x="1142" dy="22">shortfall, while Thailand and Vietnam were</tspan>
+    <tspan x="1142" dy="22">the largest negative contributors.</tspan>
+  </text>
+  <path d="M1142 593h354" stroke="#cedce6"/>
+  <text x="1142" y="624" fill="#0a2034" font-family="Georgia, Times New Roman, serif" font-size="16" font-weight="700">Primary drivers</text>
+  <circle cx="1147" cy="658" r="3" fill="#2c668f"/>
+  <text x="1160" y="663" fill="#28475d" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="12.2">Lower occupied room nights in NS-TH01.</text>
+  <circle cx="1147" cy="691" r="3" fill="#2c668f"/>
+  <text x="1160" y="696" fill="#28475d" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="12.2">Rate softness across NS-VN01 weekday mix.</text>
+  <circle cx="1147" cy="724" r="3" fill="#2c668f"/>
+  <text x="1160" y="729" fill="#28475d" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="12.2">Positive premium-segment mix in NS-SG01.</text>
+
+  <rect x="1142" y="764" width="354" height="145" rx="10" fill="#e6eff5" stroke="#c9d9e4"/>
+  <text x="1162" y="793" fill="#56778f" font-family="IBM Plex Mono, Menlo, monospace" font-size="9" font-weight="700" letter-spacing="1.4">QUERY RECORD</text>
+  <g fill="#23445c" font-family="IBM Plex Mono, Menlo, monospace" font-size="9.8">
+    <text x="1162" y="821">approved views</text>
+    <text x="1468" y="821" text-anchor="end">3</text>
+    <text x="1162" y="845">bytes billed</text>
+    <text x="1468" y="845" text-anchor="end">1.4 GB / 5 GB cap</text>
+    <text x="1162" y="869">quality gate</text>
+    <text x="1468" y="869" text-anchor="end">passed</text>
+    <text x="1162" y="893">source labels</text>
+    <text x="1468" y="893" text-anchor="end">included</text>
+  </g>
+
+  <text x="292" y="978" fill="#5f7e96" font-family="IBM Plex Mono, Menlo, monospace" font-size="9.5">SANITIZED INTERFACE RECONSTRUCTION · SYNTHETIC DATA · MODEL NARRATES, GOVERNED SQL CALCULATES</text>
+</svg>
