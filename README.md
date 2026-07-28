@@ -1,5 +1,15 @@
 # Governed FP&A Analytics Agent
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-2C668F?style=flat-square&labelColor=0A2034)](LICENSE)
+[![Agent runtime: Google ADK](https://img.shields.io/badge/agent%20runtime-google%20adk-28475D?style=flat-square&labelColor=0A2034)](requirements.txt)
+[![Model: Gemini on Vertex AI](https://img.shields.io/badge/model-gemini%20on%20vertex%20ai-28475D?style=flat-square&labelColor=0A2034)](app/config.py)
+[![Warehouse: BigQuery](https://img.shields.io/badge/warehouse-bigquery-28475D?style=flat-square&labelColor=0A2034)](app/bq_tool.py)
+[![Interface: Next.js](https://img.shields.io/badge/interface-next.js-28475D?style=flat-square&labelColor=0A2034)](frontend/src/lib/adkClient.ts)
+[![SQL: single guarded tool](https://img.shields.io/badge/sql-single%20guarded%20tool-28475D?style=flat-square&labelColor=0A2034)](app/bq_tool.py)
+[![Artifact: sanitized blueprint](https://img.shields.io/badge/artifact-sanitized%20blueprint-6F8EA7?style=flat-square&labelColor=0A2034)](#project-brief)
+[![Data: synthetic](https://img.shields.io/badge/data-synthetic-6F8EA7?style=flat-square&labelColor=0A2034)](data/sample_property_master.csv)
+[![Portfolio](https://img.shields.io/badge/portfolio-technical__resume-6F8EA7?style=flat-square&labelColor=0A2034)](https://github.com/daetan999/technical_resume)
+
 **Google ADK · Gemini on Vertex AI · BigQuery · Next.js**
 
 [System topology](#system-design) · [Control contracts](app/config.py) · [Engineering log](docs/lessons-learned.md) · [Technical portfolio](https://github.com/daetan999/technical_resume)
