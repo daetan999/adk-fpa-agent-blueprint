@@ -1,5 +1,6 @@
 # Governed FP&A Analytics Agent
 
+[![CI](https://github.com/daetan999/adk-fpa-agent-blueprint/actions/workflows/ci.yml/badge.svg)](https://github.com/daetan999/adk-fpa-agent-blueprint/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-2C668F?style=flat-square&labelColor=0A2034)](LICENSE)
 [![Agent runtime: Google ADK](https://img.shields.io/badge/agent%20runtime-google%20adk-28475D?style=flat-square&labelColor=0A2034)](requirements.txt)
 [![Model: Gemini on Vertex AI](https://img.shields.io/badge/model-gemini%20on%20vertex%20ai-28475D?style=flat-square&labelColor=0A2034)](app/config.py)
@@ -97,6 +98,7 @@ This repository contains the architecture, control contracts, representative int
 - Proprietary prompts, production query logic, credentials, internal endpoints, and company data are excluded.
 - The guarded executor, authentication, complete client, deployment, and evaluation harness are not runnable from the public tree.
 - Files marked as blueprint stubs define interface and control requirements; they are not presented as complete enforcement.
+- `frontend/` publishes the two files that define the request boundary, not a buildable application. There is no `package.json`, `next.config`, or page tree, and `route.ts` depends on a Next.js install and the `@/lib/*` path alias, so the interface cannot be run or type-checked from the public tree.
 
 ## Repository map
 
@@ -105,7 +107,7 @@ app/agent.py                         ADK root-agent interface
 app/bq_tool.py                       Guarded SQL tool contract
 app/config.py                        Approved data and KPI rules
 frontend/src/app/api/chat/route.ts   Server-side request boundary
-frontend/src/lib/adkClient.ts        Partial ADK session client
+frontend/src/lib/adkClient.ts        Partial ADK session client (excerpt)
 data/                                Synthetic property reference data
 docs/assets/                         Interface and architecture visuals
 docs/lessons-learned.md              Sanitized engineering log
