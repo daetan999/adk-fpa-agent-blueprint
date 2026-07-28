@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Mirrors the "Verify the public artifact" section of the README.
+      - name: Compile published Python sources
+        run: python -m compileall app
+
+      - name: Verify synthetic fixture and SVG assets
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import csv
+          import xml.etree.ElementTree as ET
+
+          rows = list(csv.DictReader(Path("data/sample_property_master.csv").open()))
+          assert rows and all(row["display_name"] for row in rows)
+
+          diagrams = sorted(Path("docs/assets").glob("*.svg"))
+          assert diagrams, "no SVG diagrams found in docs/assets"
+          for diagram in diagrams:
+              ET.parse(diagram)
+          print(f"verified {len(rows)} fixture rows and {len(diagrams)} diagrams")
+          PY
+
+      # No TypeScript step: frontend/ is published as excerpts, not a
+      # buildable app. route.ts imports "next/server" and the "@/lib/*"
+      # path alias, neither of which resolves without a Next.js install
+      # and tsconfig. Type-checking becomes possible if the frontend is
+      # ever published with its manifest.
+
+      - name: Check documentation links resolve
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          pattern = re.compile(r"\[[^\]]+\]\((?!https?://|#)([^)#]+)")
+          missing = []
+          for doc in sorted(Path(".").rglob("*.md")):
+              if ".github" in doc.parts:
+                  continue
+              for target in pattern.findall(doc.read_text(encoding="utf-8")):
+                  if not (doc.parent / target).exists():
+                      missing.append(f"{doc}: {target}")
+          if missing:
+              raise SystemExit("unresolved relative links:\n" + "\n".join(missing))
+          print("all relative documentation links resolve")
+          PY
